@@ -1,0 +1,1 @@
+a:3:{i:0;a:2:{s:5:"login";s:5:"admin";s:8:"password";s:64:"f9a81477552594c79f2abc3fc099daa896a6e3a3590a55ffa392b6000412e80b";}i:1;a:2:{s:5:"login";s:3:"vvv";s:8:"password";s:64:"d886b8211fbb55672b6a1c0ba32e9f5d2407e4451f2d92f29cfba07b1267e24e";}i:2;a:2:{s:5:"login";s:3:"sss";s:8:"password";s:64:"90a91c1a5be75c0a6c5a5ed2f15637dc8724c954801f417269fe4e5ea14d9802";}}
