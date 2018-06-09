@@ -18,6 +18,11 @@
 			$this->writeTodos($todos);
 		}
 
+		public function delete($index) {
+			$todos = $this->getTodos();
+			unset($todos[$index]);
+			$this->writeTodos($todos);
+		}
 	
 
 		public function save($text) {
@@ -28,6 +33,7 @@
 			];
 
 			$this -> saveTodo($todo);
+			header('location: /');
 		}
 
 		private function saveTodo($todo) {

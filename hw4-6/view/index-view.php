@@ -24,7 +24,7 @@
 				<?php if(!empty($todoModel->getTodos())) { ?>
 				<ul class="input-group">
 					<?php foreach ($todoModel->getTodos() as $i => $todo) { ?>
-						<li class="col-sm-7" >
+						<li class="col-sm-6" >
             				<?php if ($todo['status']) { echo '<s>'; } ?>
             				<?php echo $todo['text']; ?>
            					<?php if ($todo['status']) { echo '</s>'; } ?>
@@ -33,6 +33,12 @@
 							
 							<input type="hidden" name="index" value="<?php echo $i; ?>">
 							<input type="submit" class="btn btn-sm btn-primary" value="Change Status">
+
+						</form>
+						<form method="POST" action="delete-todo.php">
+							
+							<input type="hidden" name="index" value="<?php echo $i; ?>">
+							<input type="submit" class="btn btn-sm btn-primary" value="Delete">
 
 						</form>
 					<?php } ?>
