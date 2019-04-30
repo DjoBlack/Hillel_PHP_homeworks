@@ -4,7 +4,7 @@
 
 	require_once './models/post_model.php';
 	$userPostModel = new PostModel();
-	$posts = $userPostModel->getPostByUserId($_GET['user_id']);
+	$posts = $userPostModel->getPostsByUserId($_GET['user_id']);
 
 	require_once './models/user_model.php';
 	$userModel = new UserModel();

@@ -29,9 +29,11 @@
 				<div>
 					Read the post <a href="post.php?id=<?php echo $post['id']; ?>">here</a>
 				</div>
+				<a href="post.php?id=<?php echo $post['id']; ?>">Comments: <?php echo $post['count_num']; ?></a>
 				<hr>
 			</div>
 		<?php } ?>
+		
 	</div>
 </body>
 </html>

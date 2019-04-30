@@ -6,12 +6,12 @@
 <body>
 	<div>
 		<a href="/">Home</a>
-		<?php  if(isset($_SESSION['user_id'])) { if($_SESSION['user_id'] == $post['user_id']) { ?>
+		<?php  if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $post['user_id']) { ?>
 			<form method="POST" action="delete_post.php">
-				<input type="hidden" name="id" value="<?php echo $post['id'] ?>">
+				<input type="hidden" name="id" value="<?php echo $post['id']; ?>">
 				<input type="submit" value="Delete">
 			</form>
-		<?php }} ?>
+		<?php } ?>
 	</div>
 	<div>
 		<?php if(!empty($post)) { ?>
@@ -26,5 +26,28 @@
 				Post is not found!
 		<?php } ?>
 	</div>
+	<div id="comments-section">
+		<h3>Comments:</h3>
+		<?php if(!empty($comments)) { ?>
+			<?php foreach($comments as $comment) { ?>
+				<?php echo $comment['email']; ?> / 
+				<?php echo $comment['timestamp']; ?><br>
+				<?php echo $comment['body']; ?><hr>
+			<?php } ?>
+		<?php } else { echo 'No comments yet, be first!'; } ?>
+	</div>
+	<?php  if(isset($_SESSION['user_id'])) { ?>
+		<div>
+			<br>
+			<form method="POST" action="/add_comment.php" >
+				<textarea placeholder="Add Comment" name="body"></textarea><br>	
+				<input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">		
+							
+				<input type="submit" value="Comment">
+			</form>
+		</div>
+	<?php } else { ?>
+		<br><h4>Please <a href="./view/login_view.php">login</a> to add comments!</h4>
+	<?php } ?>
 </body>
 </html>
