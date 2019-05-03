@@ -6,10 +6,10 @@
 <body>
 	<div>
 		<a href="/">Home</a>
-		<?php  if(isset($_SESSION['user_id']) && $_SESSION['user_id'] == $post['user_id']) { ?>
+		<?php  if((isset($_SESSION['user_id'])) && ($_SESSION['user_id'] == $post['user_id'])) { ?>
 			<form method="POST" action="delete_post.php">
-				<input type="hidden" name="id" value="<?php echo $post['id']; ?>">
-				<input type="submit" value="Delete">
+				<input type="hidden" name="id" value="<?php echo $post['id']; ?>"><br>
+				<input type="submit" value="Delete Post">
 			</form>
 		<?php } ?>
 	</div>
@@ -32,7 +32,20 @@
 			<?php foreach($comments as $comment) { ?>
 				<?php echo $comment['email']; ?> / 
 				<?php echo $comment['timestamp']; ?><br>
-				<?php echo $comment['body']; ?><hr>
+				<?php echo $comment['body']; ?>
+				<?php  if((isset($_SESSION['user_id'])) && ($_SESSION['user_id'] == $comment['user_id'])) { ?>
+					<form method="POST" action="delete_comment.php">
+						<input type="hidden" name="comment_id" value="<?php echo $comment['comment_id']; ?>">
+						<input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+						<input type="submit" value="Delete Comment">
+					</form><br>
+					<form method="POST" action="update_comment.php">
+						<textarea placeholder="<?php echo $comment['body']; ?>" name="new_comment"></textarea><br>
+						<input type="hidden" name="comment_id" value="<?php echo $comment['comment_id']; ?>">
+						<input type="hidden" name="post_id" value="<?php echo $post['id']; ?>">
+						<input type="submit" value="Update Comment">
+					</form> 
+				<?php } var_dump($comment); ?><hr>
 			<?php } ?>
 		<?php } else { echo 'No comments yet, be first!'; } ?>
 	</div>
